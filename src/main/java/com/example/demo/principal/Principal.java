@@ -71,7 +71,6 @@ public class Principal {
                         listarAutoresConOtrasConsultas();
                         break;
                     case 0:
-                        System.out.println("Gracias por usar LiterAlura");
                         System.out.println("Cerrando la aplicacion...");
                         break;
                     default:
@@ -119,7 +118,7 @@ public class Principal {
                     Autor autor;
                     if (autorBD.isPresent()) {
                         autor = autorBD.get();
-                        System.out.println("EL autor ya esta guardado en la BD!");
+                        System.out.println("EL autor ya esta guardado en la base de datos!");
                     } else {
                         autor = autorAPI;
                         repository.save(autor);
@@ -160,7 +159,7 @@ public class Principal {
     }
 
     public void listarAutoresVivos(){
-        System.out.println("Introduce el año vivo del autor(es) que deseas buscar:");
+        System.out.println("Introduce el año vivo del autor que deseas buscar:");
         try{
             var fecha = Integer.valueOf(entrada.nextLine());
             List<Autor> autores = repository.buscarAutoresVivos(fecha);
@@ -254,14 +253,14 @@ public class Principal {
                             .map(l -> l.getTitulo()).collect(Collectors.toList()) + "\n"
             );
         } else {
-            System.out.println("El autor no existe en la BD!");
+            System.out.println("El autor no existe en la base de datos!");
         }
     }
 
     public void listarAutoresConOtrasConsultas(){
         var menu = """
                 Ingrese la opcion por la cual desea listar los autores
-                1 - Listar autor por Año de nacimiento
+                1 - Listar autor por año de nacimiento
                 2 - Listar autor por año de fallecimiento
                 """;
         System.out.println(menu);
